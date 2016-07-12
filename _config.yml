@@ -12,7 +12,7 @@ url:         # the base hostname & protocol for your site
 # Jekyll configuration
 ####################################
 #
-timezone:          Europe/Paris
+timezone:          Africa/Lagos
 markdown:          kramdown
 highlighter:       rouge
 excerpt_separator: <!--more-->
@@ -31,10 +31,10 @@ kramdown:
 ####################################
 #
 owner:
-  name: Your name
-  avatar: avatar.jpg
+  name: Akinsete Sunday
+  avatar: https://avatars0.githubusercontent.com/u/1130064?v=3&s=460
   job: "Your job"
-  bio: "Write about yourself"
+  bio: "Passionate about mobile app development"
   email:
   disqus-shortname:
   twitter:
@@ -46,9 +46,9 @@ owner:
     ad-client:
     ad-slot:
   bing-verify:
-  github: #username
+  github: akinmobile
   stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
-  linkedin: #username
+  linkedin: sundayakinsete
   xing: #username
   instagram: #username
   lastfm: #username
