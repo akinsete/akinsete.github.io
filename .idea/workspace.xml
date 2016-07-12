@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="765d276d-0b66-49df-a881-17f4b74fcd7a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2014-3-3-Hello-World.md" afterPath="$PROJECT_DIR$/_posts/2014-3-3-Hello-World.md" />
-    </list>
+    <list default="true" id="765d276d-0b66-49df-a881-17f4b74fcd7a" name="Default" comment="" />
     <ignored path="akinmobile.github.io.git.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -232,12 +230,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1468353681578</updated>
-      <workItem from="1468353682919" duration="821000" />
+      <workItem from="1468353682919" duration="832000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="821000" />
+    <option name="totallyTimeSpent" value="832000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
