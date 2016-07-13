@@ -14,6 +14,38 @@ Syntax highlighting is a feature that displays source code, in different colors 
 ### Pygments Code Blocks
 
 To modify styling and highlight colors edit `/_sass/_pygments.scss`.
+{% highlight android %}
+
+   @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_reset_password);
+        ButterKnife.inject(this);
+
+        email = (EditText)findViewById(R.id.email);
+        btn_reset_password = (Button)findViewById(R.id.btn_reset_password);
+        toolBar = (Toolbar) findViewById(R.id.toolbar);
+
+        if (toolBar != null) {
+            setSupportActionBar(toolBar);
+            getSupportActionBar().setTitle("Reset Password");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+
+        btn_reset_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startProcess();
+            }
+        });
+
+
+    }
+
+{% endhighlight %}
+
+
 
 {% highlight css %}
 #container {
