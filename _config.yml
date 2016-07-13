@@ -29,11 +29,12 @@ kramdown:
 ###################################
 # Site Owner configuration
 ####################################
+#https://www.smashingmagazine.com/2014/08/build-blog-jekyll-github-pages/
 #
 owner:
   name: Akinsete Sunday
   avatar: https://avatars0.githubusercontent.com/u/1130064?v=3&s=460
-  job: "Your job"
+  job: "Mobile App Developer"
   bio: "Passionate about mobile app development"
   email:
   disqus-shortname:
