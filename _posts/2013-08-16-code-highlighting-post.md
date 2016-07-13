@@ -2,7 +2,7 @@
 layout: post
 title: Syntax Highlighting Post
 excerpt: "Demo post displaying the various ways of highlighting code in Markdown."
-categories: [Android Development, Firebase]
+categories: [android, firebase]
 modified: 2014-09-14
 comments: true
 ---
