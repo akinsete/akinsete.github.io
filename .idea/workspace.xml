@@ -8,7 +8,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/images/jekyll-logo.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/images/jekyll-now-theme-screenshot.jpg" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/images/step1.gif" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_config.yml" afterPath="$PROJECT_DIR$/_config.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_sass/components/_syntax-highlighting.scss" afterPath="$PROJECT_DIR$/_sass/components/_syntax-highlighting.scss" />
     </list>
     <ignored path="akinmobile.github.io.git.iws" />
@@ -44,8 +43,8 @@
       <file leaf-file-name="_syntax-highlighting.scss" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/_sass/components/_syntax-highlighting.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
+            <state relative-caret-position="1119">
+              <caret line="106" column="73" selection-start-line="106" selection-start-column="73" selection-end-line="106" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -247,6 +246,10 @@
               <option name="myItemId" value="_sass" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -358,12 +361,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1468353681578</updated>
-      <workItem from="1468353682919" duration="4127000" />
+      <workItem from="1468353682919" duration="4319000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4127000" />
+    <option name="totallyTimeSpent" value="4319000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -558,8 +561,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/_sass/components/_syntax-highlighting.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
+        <state relative-caret-position="1119">
+          <caret line="106" column="73" selection-start-line="106" selection-start-column="73" selection-end-line="106" selection-end-column="73" />
           <folding />
         </state>
       </provider>
