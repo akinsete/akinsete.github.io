@@ -14,7 +14,7 @@ Syntax highlighting is a feature that displays source code, in different colors 
 ### Pygments Code Blocks
 
 To modify styling and highlight colors edit `/_sass/_pygments.scss`.
-{% highlight android %}
+{% highlight java %}
 
    @Override
     protected void onCreate(Bundle savedInstanceState) {
