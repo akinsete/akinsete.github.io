@@ -8,6 +8,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/images/jekyll-logo.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/images/jekyll-now-theme-screenshot.jpg" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/images/step1.gif" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2016-07-13-changing-android-app-theme-using-firebase.md" afterPath="$PROJECT_DIR$/_posts/2016-07-13-changing-android-app-theme-using-firebase.md" />
     </list>
     <ignored path="akinmobile.github.io.git.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,8 +74,8 @@
         <entry file="file://$PROJECT_DIR$/_posts/2016-07-13-changing-android-app-theme-using-firebase.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="60">
-                <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
+              <first_editor relative-caret-position="225">
+                <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -287,12 +288,12 @@
       <option name="presentableId" value="Default" />
       <updated>1468353681578</updated>
       <workItem from="1468353682919" duration="4797000" />
-      <workItem from="1468391442616" duration="1986000" />
+      <workItem from="1468391442616" duration="2041000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6783000" />
+    <option name="totallyTimeSpent" value="6838000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -660,8 +661,8 @@
     <entry file="file://$PROJECT_DIR$/_posts/2016-07-13-changing-android-app-theme-using-firebase.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="60">
-            <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
+          <first_editor relative-caret-position="225">
+            <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
             <folding />
           </first_editor>
           <second_editor />
