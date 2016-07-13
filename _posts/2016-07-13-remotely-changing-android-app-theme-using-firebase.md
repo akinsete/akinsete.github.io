@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Remotely changing android-app-theme-using-firebase!"
+title:  "Remotely changing android app theme using firebase!"
 date:   2015-08-18 15:07:19
 categories: [android, firebase]
 comments: true
