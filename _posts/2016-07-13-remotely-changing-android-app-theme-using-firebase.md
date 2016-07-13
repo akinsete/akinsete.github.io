@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to Jekylls!"
+title:  "Remotely changing android-app-theme-using-firebase!"
 date:   2015-08-18 15:07:19
 categories: [tutorial]
 comments: true
