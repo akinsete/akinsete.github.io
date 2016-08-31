@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "###Firebase app to app notification for android."
+title:  "Firebase app to app notification for android."
 date:   2015-08-18 15:07:19
 categories: [android, firebase]
 comments: true
@@ -8,7 +8,18 @@ comments: true
 
 
 
-Syntax highlighting is a feature that displays source code, in different colors and fonts according to the category of terms. This feature facilitates writing in a structured language such as a programming language or a markup language as both structures and syntax errors are visually distinct. Highlighting does not affect the meaning of the text itself; it is intended only for human readers.[^1]
+I have been a fan of Firebase since it was launched and started using this wonderful real-time database platform fully since May 2016 for mobile applications I developed.
+Though there are some limitations i noticed and that have been able to get workarounds to bypass this issues. What I be will explaining is how to implement Firebase app to app notification without writing a server code.
+
+### The Current Solution Firebase Provides
+Currently via the firebase console all you can do is send push notification to apps only from the console.
+
+
+
+![Smithsonian Image](/img/console_notification.png)
+
+
+
 <!--more-->
 
 [^1]: [Syntax Highlighting](http://en.wikipedia.org/wiki/Syntax_highlighting)
