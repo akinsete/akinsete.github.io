@@ -8,7 +8,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/images/jekyll-logo.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/images/jekyll-now-theme-screenshot.jpg" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/images/step1.gif" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/_posts/2016-07-13-remotely-changing-android-app-theme-using-firebase.md" afterPath="$PROJECT_DIR$/_posts/2015-08-18-remotely-changing-android-app-theme-using-firebase.md" />
     </list>
     <ignored path="akinmobile.github.io.git.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -289,12 +288,12 @@
       <option name="presentableId" value="Default" />
       <updated>1468353681578</updated>
       <workItem from="1468353682919" duration="4797000" />
-      <workItem from="1468391442616" duration="3462000" />
+      <workItem from="1468391442616" duration="3774000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8259000" />
+    <option name="totallyTimeSpent" value="8571000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
