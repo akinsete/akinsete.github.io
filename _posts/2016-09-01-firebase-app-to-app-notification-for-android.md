@@ -12,14 +12,18 @@ I have been a fan of Firebase since it was launched and started using this wonde
 Though there are some limitations i noticed and that have been able to get workarounds this issues. What I be will explaining is how to implement Firebase app to app notification without writing a server code.
 <!--more-->
 
-### The Current Solution Firebase Provides
+### What Firebase Provides
 Currently via the firebase console all you can do is send push notification to devices only from the console.
 
 ![Firebase Console Image](/img/console_notification.png)
 
 
+### Limitation
+We can't programmatically trigger a push notification to a particular device.
+
+
 ### What we want to achieve
-We want to be able to notify another user directly of a new notification without having to implement a server side setup to send push notification to that specific device.
+We want to be able to notify another device directly of a new notification without having to implement a server side backend to send push notification. So we will be using the firebase database to achieve that
 
 ### Steps to achieve this 
 * We are going to create a notifications node on our firebase database
