@@ -165,28 +165,6 @@ To avoid multiple notification we have to update the notification status to 1 af
 
 {% highlight java %}
 
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.app.Service;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.IBinder;
-import android.preference.PreferenceManager;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
-import android.text.Html;
-
-import com.appsng.plusgap.app.MainActivity;
-import com.appsng.plusgap.app.R;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import models.Notification;
-
-
 public class FirebaseNotificationServices extends Service{
 
     public FirebaseDatabase mDatabase;
