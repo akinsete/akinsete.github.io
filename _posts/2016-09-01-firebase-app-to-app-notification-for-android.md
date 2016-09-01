@@ -301,6 +301,6 @@ And that's all. We can now make an app to app notification using firebase withou
 
 I hope this is useful if you have any issues at all please feel free to drop a comment.
 
-Cheers
+Cheers <br>
 Happy coding.
 
