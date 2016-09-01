@@ -19,12 +19,12 @@ Currently via the firebase console all you can do is send push notification to d
 
 
 ### What we want to achieve
-We want to be able to notify another user directly of a new notification without having to implement a server side setup to send push notification to that specific devices.
+We want to be able to notify another user directly of a new notification without having to implement a server side setup to send push notification to that specific device.
 
 ### Steps to achieve this 
 * We are going to create a notifications node on our firebase database
-* Every user will listen to the notifications node for on child added events. That is we will have /notifications/user_id/ (notification-objects)
-* Then write a service in our android app that listens to the logged in user notification node for new data
+* Every user will listen to their notifications node for on child_added events. That is we will have /notifications/user_id/ (notification-objects)
+* Then write a service in our android app that listens to the logged in user's notification node for new data
 * When a new notification is added against the user's id we then show an android notification to alert the user on the app.
 
 See firebase structure below
