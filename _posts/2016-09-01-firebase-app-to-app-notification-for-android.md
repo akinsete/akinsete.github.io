@@ -144,159 +144,180 @@ And then we create the method as seen below
 {% endhighlight %}
 
 
-So calling this method above and passing the necessary parameters
+So calling this method above and passing the necessary parameters. And <b> please note </b> Verify the logged in user is not the sender so as to avoid sending notification to same user.
 
 {% highlight java %}
 
- if(!chatUser.getUser_id().equals(mAuth.getCurrentUser().getUid())) {
-              sendNotification(
-                        receiver_id, #who the notification is meant for
-                        "Chat message from " #Message to be displayed on the notification 
-                        "New chat message", #Message title
-                        "chat_view" #Notification type, You can use this to determine what activities to stack when the receiver clicks on the notification item
-               );
-           
+  sendNotification(
+            receiver_id, /*who the notification is meant for*/
+            "Chat message from " /*Message to be displayed on the notification*/
+            "New chat message", /*Message title*/
+            "chat_view" /*Notification type, You can use this to determine what activities to stack when the receiver clicks on the notification item*/
+   );
+
 {% endhighlight java %}
 
 
+### Implementing a Notification Service
+So what is next is to create our notification service. Ensure this service is running at all time.
 
 
+To avoid multiple notification we have to update the notification status to 1 after firing a notification
 
-
-[^1]: [Syntax Highlighting](http://en.wikipedia.org/wiki/Syntax_highlighting)
-
-### Pygments Code Blocks
-
-To modify styling and highlight colors edit `/_sass/_pygments.scss`.
 {% highlight java %}
 
-   @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reset_password);
-        ButterKnife.inject(this);
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.Service;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.IBinder;
+import android.preference.PreferenceManager;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
+import android.text.Html;
 
-        email = (EditText)findViewById(R.id.email);
-        btn_reset_password = (Button)findViewById(R.id.btn_reset_password);
-        toolBar = (Toolbar) findViewById(R.id.toolbar);
+import com.appsng.plusgap.app.MainActivity;
+import com.appsng.plusgap.app.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import models.Notification;
 
-        if (toolBar != null) {
-            setSupportActionBar(toolBar);
-            getSupportActionBar().setTitle("Reset Password");
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+
+public class FirebaseNotificationServices extends Service{
+
+    public FirebaseDatabase mDatabase;
+    FirebaseAuth firebaseAuth;
+    Context context;
+    static String TAG = "FirebaseService";
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        context = this;
 
 
-        btn_reset_password.setOnClickListener(new View.OnClickListener() {
+
+        mDatabase = FirebaseDatabase.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        setupNotificationListener();
+    }
+
+
+
+    private void setupNotificationListener() {
+
+        mDatabase.getReference().child("notifications")
+                .child(firebaseAuth.getCurrentUser().getUid())
+                .orderByChild("status").equalTo(0)
+                .addChildEventListener(new ChildEventListener() {
             @Override
-            public void onClick(View v) {
-                startProcess();
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                if(dataSnapshot != null){
+                    Notification notification = dataSnapshot.getValue(Notification.class);
+
+                    showNotification(context,notification,dataSnapshot.getKey());
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                Utilities.log("onChildChanged",dataSnapshot);
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                Utilities.log("onChildRemoved",dataSnapshot);
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                Utilities.log("onChildMoved",dataSnapshot);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Utilities.log("onCancelled",databaseError);
             }
         });
 
 
     }
 
-{% endhighlight %}
+ 
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        return Service.START_STICKY;
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        // TODO: Return the communication channel to the service.
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    private void showNotification(Context context, Notification notification,String notification_key){
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle(notification.getDescription())
+                .setDefaults(NotificationCompat.DEFAULT_ALL)
+                .setContentText(Html.fromHtml(notification.getMessage()
+                ))
+                .setAutoCancel(true);
+
+        Intent backIntent = new Intent(context, MainActivity.class);
+        backIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        Intent intent = new Intent(context, FriendsView.class);
+
+        /*  Use the notification type to switch activity to stack on the main activity*/
+        if(notification.getType().equals("chat_view")){
+            intent = new Intent(context, FriendsView.class);
+        }
 
 
+        final PendingIntent pendingIntent = PendingIntent.getActivities(context, 900,
+                new Intent[] {backIntent}, PendingIntent.FLAG_ONE_SHOT);
 
-{% highlight css %}
-#container {
-    float: left;
-    margin: 0 -240px 0 0;
-    width: 100%;
+
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+        stackBuilder.addParentStack(MainActivity.class);
+
+        mBuilder.setContentIntent(pendingIntent);
+
+
+        NotificationManager mNotificationManager =  (NotificationManager)context. getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager.notify(1, mBuilder.build());
+
+        /* Update firebase set notifcation with this key to 1 so it doesnt get pulled by our notification listener*/
+        flagNotificationAsSent(notification_key);
+    }
+
+    private void flagNotificationAsSent(String notification_key) {
+        mDatabase.getReference().child("notifications")
+                .child(firebaseAuth.getCurrentUser().getUid())
+                .child(notification_key)
+                .child("status")
+                .setValue(1);
+    }
+
 }
 {% endhighlight %}
 
-{% highlight html %}
-{% raw %}
-<nav class="pagination" role="navigation">
-    {% if page.previous %}
-        <a href="{{ site.url }}{{ page.previous.url }}" class="btn" title="{{ page.previous.title }}">Previous article</a>
-    {% endif %}
-    {% if page.next %}
-        <a href="{{ site.url }}{{ page.next.url }}" class="btn" title="{{ page.next.title }}">Next article</a>
-    {% endif %}
-</nav><!-- /.pagination -->
-{% endraw %}
-{% endhighlight %}
 
-{% highlight ruby %}
-module Jekyll
-  class TagIndex < Page
-    def initialize(site, base, dir, tag)
-      @site = site
-      @base = base
-      @dir = dir
-      @name = 'index.html'
-      self.process(@name)
-      self.read_yaml(File.join(base, '_layouts'), 'tag_index.html')
-      self.data['tag'] = tag
-      tag_title_prefix = site.config['tag_title_prefix'] || 'Tagged: '
-      tag_title_suffix = site.config['tag_title_suffix'] || '&#8211;'
-      self.data['title'] = "#{tag_title_prefix}#{tag}"
-      self.data['description'] = "An archive of posts tagged #{tag}."
-    end
-  end
-end
-{% endhighlight %}
+And that's all. We can now make an app to app notification using firebase without having a server backend.
 
+I hope this is useful if you have any issues at all please feel free to drop a comment.
 
-### Standard Code Block
-
-    {% raw %}
-    <nav class="pagination" role="navigation">
-        {% if page.previous %}
-            <a href="{{ site.url }}{{ page.previous.url }}" class="btn" title="{{ page.previous.title }}">Previous article</a>
-        {% endif %}
-        {% if page.next %}
-            <a href="{{ site.url }}{{ page.next.url }}" class="btn" title="{{ page.next.title }}">Next article</a>
-        {% endif %}
-    </nav><!-- /.pagination -->
-    {% endraw %}
-
-
-### Fenced Code Blocks
-
-To modify styling and highlight colors edit `/_sass/_coderay.scss`. Line numbers and a few other things can be modified in `_config.yml`. Consult [Jekyll's documentation](http://jekyllrb.com/docs/configuration/) for more information.
-
-~~~ css
-#container {
-    float: left;
-    margin: 0 -240px 0 0;
-    width: 100%;
-}
-~~~
-
-~~~ html
-{% raw %}<nav class="pagination" role="navigation">
-    {% if page.previous %}
-        <a href="{{ site.url }}{{ page.previous.url }}" class="btn" title="{{ page.previous.title }}">Previous article</a>
-    {% endif %}
-    {% if page.next %}
-        <a href="{{ site.url }}{{ page.next.url }}" class="btn" title="{{ page.next.title }}">Next article</a>
-    {% endif %}
-</nav><!-- /.pagination -->{% endraw %}
-~~~
-
-~~~ ruby
-module Jekyll
-  class TagIndex < Page
-    def initialize(site, base, dir, tag)
-      @site = site
-      @base = base
-      @dir = dir
-      @name = 'index.html'
-      self.process(@name)
-      self.read_yaml(File.join(base, '_layouts'), 'tag_index.html')
-      self.data['tag'] = tag
-      tag_title_prefix = site.config['tag_title_prefix'] || 'Tagged: '
-      tag_title_suffix = site.config['tag_title_suffix'] || '&#8211;'
-      self.data['title'] = "#{tag_title_prefix}#{tag}"
-      self.data['description'] = "An archive of posts tagged #{tag}."
-    end
-  end
-end
-~~~
 
