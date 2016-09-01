@@ -315,8 +315,10 @@ public class FirebaseNotificationServices extends Service{
 {% endhighlight %}
 
 
-And that's all. We can now make an app to app notification using firebase without having a server backend.
+And that's all. We can now make an app to app notification using firebase without implementing a server backend.
 
 I hope this is useful if you have any issues at all please feel free to drop a comment.
 
+Cheers
+Happy coding.
 
