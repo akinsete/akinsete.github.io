@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Firebase app to app notification for android."
-date:   2015-09-01 07:07:19
+date:   2016-09-01 07:07:19
 categories: [android, firebase]
 comments: true
 ---
@@ -9,7 +9,7 @@ comments: true
 
 
 I have been a fan of Firebase since it was launched and started using this wonderful real-time database platform fully since May 2016 for mobile applications I developed.
-Though there are some limitations i noticed and that have been able to get workarounds this issues. What I be will explaining is how to implement Firebase app to app notification without writing a server code.
+Though there are some limitations that i have noticed, For example triggering a app to app notification. So we will be implementing a firebase app to app notification without implementing a server backend.
 <!--more-->
 
 ### What Firebase Provides
