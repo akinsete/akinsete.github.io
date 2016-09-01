@@ -297,6 +297,13 @@ public class FirebaseNotificationServices extends Service{
 {% endhighlight %}
 
 
+
+### Full Project
+Access full project here [link](https://github.com/akinmobile/Firebase-Device-Notification) 
+
+
+
+
 And that's all. We can now make an app to app notification using firebase without implementing a server backend.
 
 I hope this is useful if you have any issues at all please feel free to drop a comment.
