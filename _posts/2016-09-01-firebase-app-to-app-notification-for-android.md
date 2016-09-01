@@ -144,8 +144,21 @@ And then we create the method as seen below
 {% endhighlight %}
 
 
+So calling this method above and passing the necessary parameters
 
-Th
+{% highlight java %}
+
+ if(!chatUser.getUser_id().equals(mAuth.getCurrentUser().getUid())) {
+              sendNotification(
+                        receiver_id, #who the notification is meant for
+                        "Chat message from " #Message to be displayed on the notification 
+                        "New chat message", #Message title
+                        "chat_view" #Notification type, You can use this to determine what activities to stack when the receiver clicks on the notification item
+               );
+           
+{% endhighlight java %}
+
+
 
 
 
