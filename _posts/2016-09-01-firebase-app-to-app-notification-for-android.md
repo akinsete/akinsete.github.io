@@ -299,7 +299,7 @@ public class FirebaseNotificationServices extends Service{
 
 
 ### Full Project
-Access full project here [link](https://github.com/akinmobile/Firebase-Device-Notification) 
+Access full project here [Github Repo](https://github.com/akinmobile/Firebase-Device-Notification) 
 
 
 
