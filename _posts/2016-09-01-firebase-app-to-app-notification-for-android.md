@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Firebase app to app notification for android."
-date:   2015-08-18 15:07:19
+date:   2015-09-01 07:07:19
 categories: [android, firebase]
 comments: true
 ---
