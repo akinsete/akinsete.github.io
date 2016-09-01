@@ -27,8 +27,7 @@ We want to be able to notify another user directly of a new notification without
 * Then write a service in our android app that listens to the logged in user notification node for new data
 * When a new notification is added against the user's id we then show an android notification to alert the user on the app.
 
-
-So for example when a user  with ID 1 comments on a user with id 2 on the notifications node we create <br>
+See firebase structure below
 
 ![Firebase Console Image](/img/notification_node.png)
 
