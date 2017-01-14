@@ -55,6 +55,7 @@ You will notice your project folder structure now contains two modules. One <b>a
 
 ### Step 5
 Open the  gradle for the new module and add <b>org.greenrobot:greendao-generator:3.2.0</b> to the dependencies then sync.
+
 ![adding dependency to new generator module](/img/greendaoapp/greendao-app-new-module-add-dependencies.png)
 
 ### Step 6
@@ -114,298 +115,99 @@ public class MyGenerator {
 
 
 
+After this run the generator class. Right click on the generator class then Run 'MyGenerator.main()' in this case
 
+![run-generator-class](/img/greendaoapp/run-generator-class.png)
 
-![Firebase Console Image](/img/console_notification.png)
+This will run for a while, if properly done as explained you will get a success response at the end of the execution. 
+After a success response go back to your main app, you should see a new folder called db with DAO files generated and Table entities(models)
 
+![dao-files-generated.png](/img/greendaoapp/dao-files-generated.png)
 
-### Limitation
-We can't programmatically trigger a push notification to a particular device.
+If yes that means we are good to go.
 
-
-### What we want to achieve
-We want to be able to notify another device directly of a new notification without having to implement a server side backend to send push notification. So we will be using the firebase database to achieve that
-
-### Steps to achieve this 
-* We are going to create a notifications node on our firebase database
-* Every user will listen to their notifications node for on child_added events. That is we will have /notifications/user_id/ (notification-objects)
-* Then write a service in our android app that listens to the logged in user's notification node for new data
-* When a new notification is added against the user's id we then show an android notification to alert the user on the app.
-
-See firebase structure below
-
-![Firebase Console Image](/img/notification_node.png)
-
-
-
-
-So lets start by creating a notification object and then a  method that handles adding of notification to the notifications node. Please note let this method be accessible across your entire app to avoid duplication
-
+### Step 7
+In your main app create a class extending the Application Object. In this case I created a class called AppController. Remember to make the name of your application in your
+AndroidManifest.xml file 
 
 {% highlight java %}
-
-public class Notification {
-
-    String user_id;
-
-    public String getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public long getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public long getStatus() {
-        return status;
-    }
-
-    public void setStatus(long status) {
-        this.status = status;
-    }
-
-    String message;
-    String description;
-    String type;
-    long timestamp,status;
-
-    public Notification() {
-    }
-
-
-    @Exclude
-    public Map<String, Object> toMap() {
-        HashMap<String, Object> result = new HashMap<>();
-        result.put("message", message);
-        result.put("description", description);
-        result.put("timestamp", ServerValue.TIMESTAMP);
-        result.put("type",type);
-        result.put("status",status);
-        return result;
-    }
-}
-
-{% endhighlight java %}
-
-And then we create the method as seen below
-
-{% highlight java %}
-   public static void sendNotification(String user_id,String message,String description,String type){
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("notifications").child(user_id);
-        String pushKey = databaseReference.push().getKey();
-
-        Notification notification = new Notification();
-        notification.setDescription(description);
-        notification.setMessage(message);
-        notification.setUser_id(user_id);
-        notification.setType(type);
-
-        Map<String, Object> forumValues = notification.toMap();
-        Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put(pushKey, forumValues);
-        databaseReference.setPriority(ServerValue.TIMESTAMP);
-        databaseReference.updateChildren(childUpdates, new DatabaseReference.CompletionListener() {
-            @Override
-            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                if(databaseError == null){
-
-                }
-            }
-        });
-    }
-{% endhighlight %}
-
-
-So calling this method above and passing the necessary parameters. And <b> please note </b> Verify the logged in user is not the sender so as to avoid sending notification to same user.
-
-{% highlight java %}
-
-  sendNotification(
-            receiver_id, /*who the notification is meant for*/
-            "Chat message from " /*Message to be displayed on the notification*/
-            "New chat message", /*Message title*/
-            "chat_view" /*Notification type, You can use this to determine what activities to stack when the receiver clicks on the notification item*/
-   );
-
+    <?xml version="1.0" encoding="utf-8"?>
+    <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.appsng.greendaoapp" >
+    
+        <application
+            android:name=".AppController"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme" >
+            <activity android:name=".MainActivity" >
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+    
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
+            </activity>
+        </application>
+    
+    </manifest>
 {% endhighlight java %}
 
 
-### Implementing a Notification Service
-So what is next is to create our notification service. Ensure this service is running at all time.
+### Step 8.
+Go back to the AppController class and modify it. See updated AppController class below. See explanation in comments.
 
+{% highlight java%)
+package com.appsng.greendaoapp;
 
-To avoid multiple notification we have to update the notification status to 1 after firing a notification
+import android.app.Application;
 
-{% highlight java %}
+import com.appsng.greendaoapp.db.DaoMaster;
+import com.appsng.greendaoapp.db.DaoSession;
 
-public class FirebaseNotificationServices extends Service{
+import org.greenrobot.greendao.database.Database;
 
-    public FirebaseDatabase mDatabase;
-    FirebaseAuth firebaseAuth;
-    Context context;
-    static String TAG = "FirebaseService";
+/**
+ * Created by Akinsete on 1/14/17.
+ */
+
+public class AppController extends Application {
+
+    public static final boolean ENCRYPTED = true;
+    private DaoSession daoSession;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        context = this;
 
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this,"users-db"); //The users-db here is the name of our database. 
+        Database db = helper.getWritableDb(); 
+        daoSession = new DaoMaster(db).newSession();
 
-
-        mDatabase = FirebaseDatabase.getInstance();
-        firebaseAuth = FirebaseAuth.getInstance();
-
-        setupNotificationListener();
+        ///// Using the below lines of code we can toggle ENCRYPTED to true or false in other to use either an encrypted database or not.
+//      DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, ENCRYPTED ? "users-db-encrypted" : "users-db");
+//      Database db = ENCRYPTED ? helper.getEncryptedWritableDb("super-secret") : helper.getWritableDb();
+//      daoSession = new DaoMaster(db).newSession();
     }
 
-
-
-    private void setupNotificationListener() {
-
-        mDatabase.getReference().child("notifications")
-                .child(firebaseAuth.getCurrentUser().getUid())
-                .orderByChild("status").equalTo(0)
-                .addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                if(dataSnapshot != null){
-                    Notification notification = dataSnapshot.getValue(Notification.class);
-
-                    showNotification(context,notification,dataSnapshot.getKey());
-                }
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                Utilities.log("onChildChanged",dataSnapshot);
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                Utilities.log("onChildRemoved",dataSnapshot);
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-                Utilities.log("onChildMoved",dataSnapshot);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Utilities.log("onCancelled",databaseError);
-            }
-        });
-
-
-    }
-
- 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        return Service.START_STICKY;
-    }
-
-    @Override
-    public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
-
-    private void showNotification(Context context, Notification notification,String notification_key){
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle(notification.getDescription())
-                .setDefaults(NotificationCompat.DEFAULT_ALL)
-                .setContentText(Html.fromHtml(notification.getMessage()
-                ))
-                .setAutoCancel(true);
-
-        Intent backIntent = new Intent(context, MainActivity.class);
-        backIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-        Intent intent = new Intent(context, FriendsView.class);
-
-        /*  Use the notification type to switch activity to stack on the main activity*/
-        if(notification.getType().equals("chat_view")){
-            intent = new Intent(context, FriendsView.class);
-        }
-
-
-        final PendingIntent pendingIntent = PendingIntent.getActivities(context, 900,
-                new Intent[] {backIntent}, PendingIntent.FLAG_ONE_SHOT);
-
-
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-        stackBuilder.addParentStack(MainActivity.class);
-
-        mBuilder.setContentIntent(pendingIntent);
-
-
-        NotificationManager mNotificationManager =  (NotificationManager)context. getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.notify(1, mBuilder.build());
-
-        /* Update firebase set notifcation with this key to 1 so it doesnt get pulled by our notification listener*/
-        flagNotificationAsSent(notification_key);
-    }
-
-    private void flagNotificationAsSent(String notification_key) {
-        mDatabase.getReference().child("notifications")
-                .child(firebaseAuth.getCurrentUser().getUid())
-                .child(notification_key)
-                .child("status")
-                .setValue(1);
+    public DaoSession getDaoSession() {
+        return daoSession;
     }
 
 }
-{% endhighlight %}
+
+{% endhighlight java%)
+
+And that's it we have successfully integrated greenDao into our android application. So if you choose to add other tables go to the generator class edit the entities then run the 
+generator class, it will generate the DAO files and other entities needed.
 
 
-
-### Full Project
-Access full project here [Github Repo](https://github.com/akinmobile/Firebase-Device-Notification) 
+In the next tutorial. I will be explaining in details how to query and interact with our newly integrated ORM for Sqlite management.
 
 
+Access full project here [Github Repo](https://github.com/akinsete/integrating-greenDao-into-your-android-application) 
 
-
-And that's all. We can now make an app to app notification using firebase without implementing a server backend.
 
 I hope this is useful if you have any issues at all please feel free to drop a comment.
 
