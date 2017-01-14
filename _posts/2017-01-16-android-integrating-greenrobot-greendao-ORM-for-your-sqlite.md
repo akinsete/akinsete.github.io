@@ -1,12 +1,14 @@
 ---
 layout: post
-title:  "Android Integrating Greenrobot Greendao ORM for Your Sqlite"
+title:  "Integrating Greendao into your Android Application"
 date:   2017-01-16 07:07:19
 categories: [android, sqlite, database]
 comments: true
 ---
 
 greenDAO is an open source Android ORM making development for SQLite databases fun again. It relieves developers from dealing with low-level database requirements while saving development time 
+An ORM is a layer between the relational SQLite database and the object-oriented app code. The ORM allows the developer to use the database without the need to transform objects into a format suited for the relational database.
+
 At the end of this tutorial you should be able to integrate GreenDao into your android application in less than 10 minutes.
 <!--more-->
 
