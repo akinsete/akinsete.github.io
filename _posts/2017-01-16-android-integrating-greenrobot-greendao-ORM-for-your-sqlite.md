@@ -169,7 +169,7 @@ import com.appsng.greendaoapp.db.DaoSession;
 import org.greenrobot.greendao.database.Database;
 
 /**
- * Created by Akinsete on 1/14/17.
+ * Created by Akinsete on 1/14/16.
  */
 
 public class AppController extends Application {
@@ -203,7 +203,7 @@ And that's it we have successfully integrated greenDao into our android applicat
 generator class, it will generate the DAO files and other entities needed.
 
 
-In the next tutorial. I will be explaining in details how to query and interact with our newly integrated ORM for Sqlite management.
+In the next tutorial. ([Interacting with android SQLite using greenDao](https://github.com/akinsete/interacting-with-android-SQLite-using-greendao)) I will be explaining in details how to query and interact with our newly integrated ORM for Sqlite management.
 
 
 Access full project here [Github Repo](https://github.com/akinsete/integrating-greenDao-into-your-android-application) 

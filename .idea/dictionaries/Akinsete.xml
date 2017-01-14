@@ -2,6 +2,9 @@
   <dictionary name="Akinsete">
     <words>
       <w>firebase</w>
+      <w>gradle</w>
+      <w>greendao</w>
+      <w>greendaoapp</w>
     </words>
   </dictionary>
 </component>
