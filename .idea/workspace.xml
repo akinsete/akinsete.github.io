@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="765d276d-0b66-49df-a881-17f4b74fcd7a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2017-01-17-interacting-with-android-SQLite-using-greendao.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/Akinsete.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/Akinsete.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2017-01-16-android-integrating-greenrobot-greendao-ORM-for-your-sqlite.md" afterPath="$PROJECT_DIR$/_posts/2017-01-16-android-integrating-greenrobot-greendao-ORM-for-your-sqlite.md" />
     </list>
     <ignored path="akinmobile.github.io.git.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -284,7 +281,7 @@
       <updated>1468353681578</updated>
       <workItem from="1468353682919" duration="4797000" />
       <workItem from="1468391442616" duration="3774000" />
-      <workItem from="1484411395970" duration="11591000" />
+      <workItem from="1484411395970" duration="11601000" />
     </task>
     <task id="LOCAL-00001" summary="updating title">
       <created>1484411727255</created>
@@ -335,11 +332,18 @@
       <option name="project" value="LOCAL" />
       <updated>1484431695684</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="done with integrating greenDao">
+      <created>1484432002263</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1484432002263</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20162000" />
+    <option name="totallyTimeSpent" value="20172000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1023" extended-state="6" />
