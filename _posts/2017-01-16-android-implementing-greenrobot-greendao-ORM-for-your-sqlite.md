@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "android implementing greenrobot greendao ORM for your sqlite"
+title:  "Android Implementing Greenrobot Greendao ORM for Your Sqlite"
 date:   2017-01-16 07:07:19
 categories: [android, sqlite, database]
 comments: true
