@@ -1,19 +1,38 @@
 ---
 layout: post
-title:  "Android Implementing Greenrobot Greendao ORM for Your Sqlite"
+title:  "Android Integrating Greenrobot Greendao ORM for Your Sqlite"
 date:   2017-01-16 07:07:19
 categories: [android, sqlite, database]
 comments: true
 ---
 
-
-
-I have been a fan of Firebase since it was launched and started using this wonderful real-time database platform fully since May 2016 for mobile applications I developed.
-Though there are some limitations that i have noticed, For example triggering a app to app notification. So we will be implementing a firebase app to app notification without implementing a server backend.
+greenDAO is an open source Android ORM making development for SQLite databases fun again. It relieves developers from dealing with low-level database requirements while saving development time 
+At the end of this tutorial you should be able to integrate GreenDao into your android application in less than 10 minutes.
 <!--more-->
 
-### What Firebase Provides
-Currently via the firebase console all you can do is send push notification to devices only from the console.
+###Features of greenDao
+* Maximum performance (probably the fastest ORM for Android); our benchmarks are open sourced too
+* Easy to use powerful APIs covering relations and joins
+* Minimal memory consumption
+* Small library size (<100KB) to keep your build times low and to avoid the 65k method limit
+* Database encryption: greenDAO supports SQLCipher to keep your user’s data safe
+* Strong community: More than 5.000 GitHub stars show there is a strong and active community
+
+
+
+### Step 1
+If you have an app already you can skip this step otherwise Create an android project from Android Studio.
+File->New->New Project
+
+### Step 2
+Go to your build.gradle(Module:app) app level gradle file add <b>'org.greenrobot:greendao:3.2.0'</b> to your dependencies then sync the gradle file
+![Add greenDao to your dependencies ](/img/greendaoappgradle.png)
+
+### Step 3
+Go to your build.gradle(Prioject:greendaoapp) project level gradle file and add <b>org.greenrobot:greendao-gradle-plugin:3.2.0</b> as a class path to your dependencies then sync the gradle file
+![Add greenDao classpath to project level gradle file ](/img/greendaoappprojectgradle.png)
+
+
 
 ![Firebase Console Image](/img/console_notification.png)
 
