@@ -27,12 +27,12 @@ File->New->New Project
 ## Step 2
 Go to your build.gradle(Module:app) app level gradle file add <b>'org.greenrobot:greendao:3.2.0'</b> to your dependencies then sync the gradle file
 
-![Add greenDao to your dependencies ](/img/greendao/greendaoappgradle.png)
+![Add greenDao to your dependencies ](/img/greendaoapp/greendaoappgradle.png)
 
 ### Step 3
 Go to your build.gradle(Prioject:greendaoapp) project level gradle file and add <b>org.greenrobot:greendao-gradle-plugin:3.2.0</b> as a class path to your dependencies then sync the gradle file
 
-![Add greenDao classpath to project level gradle file ](/img/greendao/greendaoappprojectgradle.png)
+![Add greenDao classpath to project level gradle file ](/img/greendaoapp/greendaoappprojectgradle.png)
 
 
 ### Step 4
@@ -46,16 +46,16 @@ want to read more about this visit [GreenDao Generator](http://greenrobot.org/gr
 * Java Class Name  "Here we use - <b>MyGenerator</b>"
 * Click Finish
  
-![adding generator module](/img/greendao/greendao-app-creating-module.png)
+![adding generator module](/img/greendaoapp/greendao-app-creating-module.png)
 
 You will notice your project folder structure now contains two modules. One <b>app</b> and the other <b>greendaogenerator</b>
 
-![new-folder-structure](/img/greendao/greendao-folder-structure.png)
+![new-folder-structure](/img/greendaoapp/greendao-folder-structure.png)
 
 
 ### Step 5
 Open the  gradle for the new module and add <b>org.greenrobot:greendao-generator:3.2.0</b> to the dependencies then sync.
-![adding dependency to new generator module](/img/greendao/greendao-app-new-module-add-dependencies.png)
+![adding dependency to new generator module](/img/greendaoapp/greendao-app-new-module-add-dependencies.png)
 
 ### Step 6
 Now we are going to modify our generator class so we can generate the dao files and entities (Tables). In this example we will be creating a table called <b>users</b>
@@ -87,7 +87,7 @@ public class MyGenerator {
 
     private static void addTables(final Schema schema) {
         addUserEntities(schema);
-      //addPhonesEntities(schema);
+       // addPhonesEntities(schema);
     }
 
     // This is use to describe the colums of your table
@@ -101,13 +101,13 @@ public class MyGenerator {
         return user;
     }
     
-    <!--private static Entity addPhonesEntities(final Schema schema) {-->
-        <!--Entity phone = schema.addEntity("Phone");-->
-        <!--phone.addIdProperty().primaryKey().autoincrement();-->
-        <!--phone.addIntProperty("user_id").notNull();-->
-        <!--phone.addStringProperty("number");-->
-        <!--return user;-->
-    <!--}-->
+ //    private static Entity addPhonesEntities(final Schema schema) {
+ //        Entity phone = schema.addEntity("Phone");
+ //        phone.addIdProperty().primaryKey().autoincrement();
+ //        phone.addIntProperty("user_id").notNull();
+ //        phone.addStringProperty("number");
+ //        return phone;
+ //    }
 }
 
 {% endhighlight java %}
