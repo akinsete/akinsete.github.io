@@ -40,8 +40,8 @@
           </provider>
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="83">
-                <caret line="171" column="33" selection-start-line="171" selection-start-column="33" selection-end-line="171" selection-end-column="33" />
+              <first_editor relative-caret-position="165">
+                <caret line="11" column="114" selection-start-line="11" selection-start-column="114" selection-end-line="11" selection-end-column="114" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -281,7 +281,7 @@
       <updated>1468353681578</updated>
       <workItem from="1468353682919" duration="4797000" />
       <workItem from="1468391442616" duration="3774000" />
-      <workItem from="1484411395970" duration="11601000" />
+      <workItem from="1484411395970" duration="11909000" />
     </task>
     <task id="LOCAL-00001" summary="updating title">
       <created>1484411727255</created>
@@ -339,11 +339,18 @@
       <option name="project" value="LOCAL" />
       <updated>1484432002263</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="done with integrating greenDao ....">
+      <created>1484432463268</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1484432463268</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20172000" />
+    <option name="totallyTimeSpent" value="20480000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1023" extended-state="6" />
@@ -383,7 +390,8 @@
     <MESSAGE value="updating title" />
     <MESSAGE value="starting android project" />
     <MESSAGE value="done with integrating greenDao" />
-    <option name="LAST_COMMIT_MESSAGE" value="done with integrating greenDao" />
+    <MESSAGE value="done with integrating greenDao ...." />
+    <option name="LAST_COMMIT_MESSAGE" value="done with integrating greenDao ...." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -684,8 +692,8 @@
       </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="83">
-            <caret line="171" column="33" selection-start-line="171" selection-start-column="33" selection-end-line="171" selection-end-column="33" />
+          <first_editor relative-caret-position="165">
+            <caret line="11" column="114" selection-start-line="11" selection-start-column="114" selection-end-line="11" selection-end-column="114" />
             <folding />
           </first_editor>
           <second_editor />
