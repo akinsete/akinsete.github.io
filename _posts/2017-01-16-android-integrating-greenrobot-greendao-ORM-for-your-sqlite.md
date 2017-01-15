@@ -117,6 +117,89 @@ public class MyGenerator {
 
 
 
+After this run the generator class. Right click on the generator class then Run 'MyGenerator.main()' in this case
+
+![run-generator-class](/img/greendaoapp/run-generator-class.png)
+
+This will run for a while, if properly done as explained you will get a success response at the end of the execution. 
+After a success response go back to your main app, you should see a new folder called db with DAO files generated and Table entities(models)
+
+![dao-files-generated.png](/img/greendaoapp/dao-files-generated.png)
+
+If yes that means we are good to go.
+
+### Step 7
+In your main app create a class extending the Application Object. In this case I created a class called AppController. Remember to make the name of your application in your
+AndroidManifest.xml file 
+
+{% highlight java %}
+    <?xml version="1.0" encoding="utf-8"?>
+    <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.appsng.greendaoapp" >
+    
+        <application
+            android:name=".AppController"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme" >
+            <activity android:name=".MainActivity" >
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+    
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
+            </activity>
+        </application>
+    
+    </manifest>
+{% endhighlight java %}
+
+
+### Step 8
+Go back to the AppController class and modify it. See updated AppController class below. See explanation in comments.
+
+{% highlight java %}
+package com.appsng.greendaoapp;
+
+import android.app.Application;
+
+import com.appsng.greendaoapp.db.DaoMaster;
+import com.appsng.greendaoapp.db.DaoSession;
+
+import org.greenrobot.greendao.database.Database;
+
+/**
+ * Created by Akinsete on 1/14/16.
+ */
+
+public class AppController extends Application {
+
+    public static final boolean ENCRYPTED = true;
+    private DaoSession daoSession;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this,"users-db"); //The users-db here is the name of our database. 
+        Database db = helper.getWritableDb(); 
+        daoSession = new DaoMaster(db).newSession();
+
+        ///// Using the below lines of code we can toggle ENCRYPTED to true or false in other to use either an encrypted database or not.
+//      DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, ENCRYPTED ? "users-db-encrypted" : "users-db");
+//      Database db = ENCRYPTED ? helper.getEncryptedWritableDb("super-secret") : helper.getWritableDb();
+//      daoSession = new DaoMaster(db).newSession();
+    }
+
+    public DaoSession getDaoSession() {
+        return daoSession;
+    }
+
+}
+{% endhighlight java %}
+
 
 And that's it we have successfully integrated greenDao into our android application. So if you choose to add other tables go to the generator class edit the entities then run the 
 generator class, it will generate the DAO files and other entities needed.
