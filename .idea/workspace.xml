@@ -38,8 +38,24 @@
           </provider>
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="218">
-                <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
+              <first_editor relative-caret-position="-502">
+                <caret line="134" column="18" selection-start-line="134" selection-start-column="18" selection-end-line="134" selection-end-column="18" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2016-09-01-firebase-app-to-app-notification-for-android.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_posts/2016-09-01-firebase-app-to-app-notification-for-android.md">
+          <provider editor-type-id="MarkdownFxPreviewEditor">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="510">
+                <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -84,6 +100,7 @@
         <option value="$PROJECT_DIR$/_posts/2016-07-13-changing-android-app-theme-using-firebase.md" />
         <option value="$PROJECT_DIR$/_posts/2016-07-13-remotely-changing-android-app-theme-using-firebase.md" />
         <option value="$PROJECT_DIR$/_posts/2017-01-16-android-implementing-greenrobot-greendao-ORM-for-your-sqlite.md" />
+        <option value="$PROJECT_DIR$/_posts/2016-09-01-firebase-app-to-app-notification-for-android.md" />
         <option value="$PROJECT_DIR$/_posts/2017-01-16-android-integrating-greenrobot-greendao-ORM-for-your-sqlite.md" />
       </list>
     </option>
@@ -279,7 +296,7 @@
       <updated>1468353681578</updated>
       <workItem from="1468353682919" duration="4797000" />
       <workItem from="1468391442616" duration="3774000" />
-      <workItem from="1484411395970" duration="13323000" />
+      <workItem from="1484411395970" duration="13974000" />
     </task>
     <task id="LOCAL-00001" summary="updating title">
       <created>1484411727255</created>
@@ -358,11 +375,18 @@
       <option name="project" value="LOCAL" />
       <updated>1484438703102</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="done with integrating greenDao ....">
+      <created>1484439734487</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1484439734487</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21894000" />
+    <option name="totallyTimeSpent" value="22545000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1023" extended-state="6" />
@@ -698,14 +722,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/2016-09-01-firebase-app-to-app-notification-for-android.md">
+      <provider editor-type-id="MarkdownFxPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="510">
+            <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/_posts/2017-01-16-android-integrating-greenrobot-greendao-ORM-for-your-sqlite.md">
       <provider editor-type-id="MarkdownFxPreviewEditor">
         <state />
       </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="218">
-            <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
+          <first_editor relative-caret-position="-502">
+            <caret line="134" column="18" selection-start-line="134" selection-start-column="18" selection-end-line="134" selection-end-column="18" />
             <folding />
           </first_editor>
           <second_editor />
