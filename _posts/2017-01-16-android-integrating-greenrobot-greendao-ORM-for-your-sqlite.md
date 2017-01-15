@@ -132,6 +132,29 @@ If yes that means we are good to go.
 In your main app create a class extending the Application Object. In this case I created a class called AppController. Remember to make the name of your application in your
 AndroidManifest.xml file 
 
+{% highlight java %}
+    <?xml version="1.0" encoding="utf-8"?>
+    <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.appsng.greendaoapp" >
+    
+        <application
+            android:name=".AppController"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme" >
+            <activity android:name=".MainActivity" >
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+    
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
+            </activity>
+        </application>
+    
+    </manifest>
+{% endhighlight java %}
 
 
 ### Step 8.
@@ -175,8 +198,8 @@ public class AppController extends Application {
     }
 
 }
+{% endhighlight java %}
 
-{% endhighlight java%}
 
 And that's it we have successfully integrated greenDao into our android application. So if you choose to add other tables go to the generator class edit the entities then run the 
 generator class, it will generate the DAO files and other entities needed.
